@@ -1,5 +1,7 @@
 #import section
 
+#max harrison is gay
+
 #setting var
 Possible_Locations = ["Woods","Factory"]
 Current_Location = "Woods"
