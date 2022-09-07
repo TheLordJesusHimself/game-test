@@ -1,7 +1,5 @@
 #import section
 
-#test
-
 #setting var
 Possible_Locations = ["Woods","Factory"]
 Current_Location = "Woods"
