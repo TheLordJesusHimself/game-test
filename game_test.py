@@ -1,7 +1,9 @@
 #import section
 
+#test
+
 #setting var
-Possible_Locations = ["Woods","Potato Factory"]
+Possible_Locations = ["Woods","Factory"]
 Current_Location = "Woods"
 New_Location = ""
 
