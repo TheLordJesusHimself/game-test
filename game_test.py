@@ -20,11 +20,11 @@ def startup(): #Startup Screen
     |___/                                                  
     ''')
 
-    Username = input('What shall we call you,explorer?\n')
+    Username = input('What shall we call you, explorer?\n >\t')
     print (f'Welcome to my game, {Username}')
 
 def Ask_Location(Current_Location): #This asks for your location in an infinite loop
-    New_Location = input(f'You are currently in the {Current_Location}! Where would you like to go?\n')
+    New_Location = input(f'You are currently in the {Current_Location}! Where would you like to go?\n >\t')
     if New_Location in Possible_Locations: 
         return Possible_Locations[Possible_Locations.index(New_Location)]
     else: return None
