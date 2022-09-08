@@ -9,17 +9,7 @@ Current_Location = Possible_Locations[0]
 #________________________________________________________________________________________________________________________________
 
 def startup(): #Startup Screen
-    print('''
-                                         _            _   
-                                        | |          | |  
-    __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ 
-    / _` |/ _` | '_ ` _ \ / _ \ |______| | __/ _ \/ __| __|
-    | (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ 
-    \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|
-    __/ |                                                 
-    |___/                                                  
-    ''')
-
+    print('                                       _            _   \n                                      | |          | |  \n  __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ \n / _` |/ _` | \'_ ` _ \ / _ \ |______| | __/ _ \/ __| __|\n| (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ \n \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|\n  __/ |                                                 \n |___/                                                  \n')
     Username = input('What shall we call you, explorer?\n >\t')
     print (f'Welcome to my game, {Username}')
 
@@ -31,7 +21,7 @@ def Ask_Location(Current_Location): #This asks for your location in an infinite 
 
 def main(): 
     startup()
-    print(Ask_Location(Current_Location))
+    Current_Location = Ask_Location(Current_Location)
 
 #________________________________________________________________________________________________________________________________
 
