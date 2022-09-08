@@ -4,7 +4,7 @@ import os #best module, change my mind
 
 #setup globals
 Possible_Locations = ['Woods', 'Factory']
-Current_Location = Possible_Locations[0]
+Current_Location = Possible_Locations[Possible_Locations.index('Woods')]
 
 #________________________________________________________________________________________________________________________________
 
@@ -15,7 +15,7 @@ def startup(): #Startup Screen
     print (f'Welcome to my game, {Username}')
 
 def Ask_Location(Current_Location): #This asks for your location in an infinite loop
-    New_Location = input(f'You are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t')
+    New_Location = input(f'\nYou are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t')
     if New_Location in Possible_Locations: 
         return Possible_Locations[Possible_Locations.index(New_Location)]
     else: Ask_Location(Current_Location)
