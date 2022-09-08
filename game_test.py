@@ -20,7 +20,7 @@ def Ask_Location(Current_Location): #This asks for your location in an infinite 
         return Possible_Locations[Possible_Locations.index(New_Location)]
     else: Ask_Location(Current_Location)
 
-def main(): 
+def main(Current_Location): 
     startup()
     
     try:
@@ -31,4 +31,4 @@ def main():
 
 #________________________________________________________________________________________________________________________________
 
-if __name__ == '__main__': main()
+if __name__ == '__main__': main(Current_Location)
