@@ -1,22 +1,29 @@
-#import section
+import os #best module, change my mind
 
-#random variables
-Nothing = ""
-#location variables
-Possible_Locations = ["Woods","Factory"]
-Current_Location = "Woods"
-New_Location = ""
+#________________________________________________________________________________________________________________________________
+
+#setup globals
+Possible_Locations = ['Woods', 'Factory']
+Current_Location = Possible_Locations[0]
+
+#________________________________________________________________________________________________________________________________
+
+def startup():
+    # Startup Screen
+    Username = input('What shall we call you,explorer?\n')
+    print (f'Welcome to my game, {Username}')
 
 #This asks for your location in an inifite loop
-def Ask_Location():
-    New_Location = input("You are currently in the "+Current_Location+"! where would you like to go?\n")
-    if New_Location in Possible_Locations:
-        Current_Location = New_Location
-        New_Location = None
-    Ask_Location()
+def Ask_Location(Current_Location):
+    New_Location = input(f'You are currently in the {Current_Location}! Where would you like to go?\n')
+    if New_Location in Possible_Locations: 
+        return Possible_Locations[Possible_Locations.index(New_Location)]
+    else: return None
 
-# Startup Screen
-Username = input("What shall we call you,explorer?\n")
-print ("Welcome to my game,"+Username+".")
+def main(): 
+    startup()
+    Current_Location = Ask_Location(Current_Location)
 
-Ask_Location()
+#________________________________________________________________________________________________________________________________
+
+if __name__ == '__main__': main()
