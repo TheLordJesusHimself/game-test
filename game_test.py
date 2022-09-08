@@ -26,7 +26,7 @@ def main(Current_Location):
     try:
         while True:
             Current_Location = Ask_Location(Current_Location)
-            print(Current_Location)
+            #print(Current_Location)
     except KeyboardInterrupt: pass
 
 #________________________________________________________________________________________________________________________________
