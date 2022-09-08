@@ -10,6 +10,7 @@ Current_Location = Possible_Locations[0]
 
 def startup(): #Startup Screen
     print('                                       _            _   \n                                      | |          | |  \n  __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ \n / _` |/ _` | \'_ ` _ \ / _ \ |______| | __/ _ \/ __| __|\n| (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ \n \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|\n  __/ |                                                 \n |___/                                                  \n')
+    
     Username = input('What shall we call you, explorer?\n >\t')
     print (f'Welcome to my game, {Username}')
 
@@ -17,11 +18,16 @@ def Ask_Location(Current_Location): #This asks for your location in an infinite 
     New_Location = input(f'You are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t')
     if New_Location in Possible_Locations: 
         return Possible_Locations[Possible_Locations.index(New_Location)]
-    else: return None
+    else: Ask_Location(Current_Location)
 
 def main(): 
     startup()
-    Current_Location = Ask_Location(Current_Location)
+    
+    try:
+        while True:
+            Current_Location = Ask_Location(Current_Location)
+            print(Current_Location)
+    except KeyboardInterrupt: pass
 
 #________________________________________________________________________________________________________________________________
 
