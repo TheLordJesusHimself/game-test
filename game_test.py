@@ -16,7 +16,7 @@ def startup() -> None: #Startup Screen
 
 def Ask_Location(Current_Location) -> str | None: #This asks for your location
     New_Location = input(f'\nYou are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t') # `Current_Location.strip()` just removes trailing whitepace
-    if New_Location in Possible_Locations: #english syntax
+    if New_Location.lower() in Possible_Locations: #english syntax
         return Possible_Locations[Possible_Locations.index(New_Location)] #lookup new location in list, return value at the point (should be same as new location)
     else: Ask_Location(Current_Location)
 
