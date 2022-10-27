@@ -9,31 +9,37 @@ Current_Location = Possible_Locations[Possible_Locations.index('woods')] #get lo
 #________________________________________________________________________________________________________________________________
 
 def startup() -> None: #Startup Screen
-    print('                                       _            _   \n                                      | |          | |  \n  __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ \n / _` |/ _` | \'_ ` _ \ / _ \ |______| | __/ _ \/ __| __|\n| (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ \n \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|\n  __/ |                                                 \n |___/                                                  \n')
-    #ascii art^^
-    Username = input('What shall we call you, explorer?\n >\t') #creates little arrow to indicate input
-    Username = Username.lower().split(' ')
-    for string in Username:
-        Username[Username.index(string)] = string.capitalize()
-    Username = ' '.join(Username)
-    print (f'Welcome to my game, {Username}') #fstrings
+	print('                                       _            _   \n                                      | |          | |  \n  __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ \n / _` |/ _` | \'_ ` _ \ / _ \ |______| | __/ _ \/ __| __|\n| (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ \n \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|\n  __/ |                                                 \n |___/                                                  \n')
+	#ascii art^^
+	Username = input('What shall we call you, explorer?\n >\t') #creates little arrow to indicate input
+	Username = capital_each(Username)
+	print (f'Welcome to my game, {Username}') #fstrings
+
+def capital_each(string: str) -> str: #makes each word lowercase and start with a capital letter
+	string = string.lower().split(' ')
+	for word in string:
+		string[string.index(word)] = word.capitalize()
+	string = ' '.join(string)
+	return string    
 
 def Ask_Location(Current_Location) -> str | None: #This asks for your location
-    New_Location = input(f'\nYou are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t') # `Current_Location.strip()` just removes trailing whitepace
-    if New_Location.lower() in Possible_Locations: #english syntax
-        return Possible_Locations[Possible_Locations.index(New_Location.lower())] #lookup new location in list, return value at the point (should be same as new location)
-    else: 
-        print('Not a valid answer')
-        Ask_Location(Current_Location)
+	Current_Location = capital_each(Current_Location)
+	New_Location = input(f'\nYou are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t') # `Current_Location.strip()` just removes trailing whitespace
+
+	if New_Location.lower() in Possible_Locations: #english syntax
+		return Possible_Locations[Possible_Locations.index(New_Location.lower())] #lookup new location in list, return value at the point (should be same as new location)
+	else: 
+		print('Not a valid answer')
+		Ask_Location(Current_Location)
 
 def main(Current_Location) -> None: #had to pass var through
-    startup() #start screen
-    
-    try: #when not `Ctrl+C`
-        while True: #Loops
-            Current_Location = Ask_Location(Current_Location) #ask, passing parems & returns
-            #smth happens in that place
-    except KeyboardInterrupt: pass #if you press `Ctrl+C` the game ends
+	startup() #start screen
+	
+	try: #when not `Ctrl+C`
+		while True: #Loops
+			Current_Location = Ask_Location(Current_Location) #ask, passing params & returns
+			#smth happens in that place
+	except KeyboardInterrupt: pass #if you press `Ctrl+C` the game ends
 
 #________________________________________________________________________________________________________________________________
 
