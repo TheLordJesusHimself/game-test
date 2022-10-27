@@ -3,8 +3,8 @@ import os #best module, change my mind
 #________________________________________________________________________________________________________________________________
 
 #setup globals
-Possible_Locations = ['Woods', 'Factory']
-Current_Location = Possible_Locations[Possible_Locations.index('Woods')] #get location of value `'Woods'` in list
+Possible_Locations = ['woods', 'factory']
+Current_Location = Possible_Locations[Possible_Locations.index('woods')] #get location of value `'Woods'` in list
 
 #________________________________________________________________________________________________________________________________
 
