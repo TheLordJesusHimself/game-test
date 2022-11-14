@@ -16,23 +16,23 @@ def startup() -> None: #Startup Screen
 	print (f'Welcome to my game, {Username}') #fstrings
 
 def capital_each(string: str) -> str: #makes each word lowercase and start with a capital letter
-	string = string.lower().split(' ')
-	for word in string:
-		string[string.index(word)] = word.capitalize()
-	string = ' '.join(string)
-	return string    
+	string = string.lower().split(' ') #make a list from each word
+	for word in string: #for each word
+		string[string.index(word)] = word.capitalize() #make it capital
+	string = ' '.join(string) #make back into str
+	return string #return str
 
-def Ask_Location(Current_Location) -> str | None: #This asks for your location
-	Current_Location = capital_each(Current_Location)
+def Ask_Location(Current_Location: str) -> str | None: #This asks for your location
+	Current_Location = capital_each(Current_Location) #print it nicely just for u
 	New_Location = input(f'\nYou are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t') # `Current_Location.strip()` just removes trailing whitespace
 
-	if New_Location.lower() in Possible_Locations: #english syntax
+	if New_Location.lower() in Possible_Locations: #convert new loc to lowercase then see if it is a valid loc
 		return Possible_Locations[Possible_Locations.index(New_Location.lower())] #lookup new location in list, return value at the point (should be same as new location)
 	else: 
 		print('Not a valid answer')
-		Ask_Location(Current_Location)
+		Ask_Location(Current_Location) #redo the function (mildly illegal code)
 
-def main(Current_Location) -> None: #had to pass var through
+def main(Current_Location: str) -> None: #had to pass var through
 	startup() #start screen
 	
 	try: #when not `Ctrl+C`
