@@ -30,7 +30,8 @@ def Ask_Location(Current_Location: str) -> str | None: #This asks for your locat
 		return Possible_Locations[Possible_Locations.index(New_Location.lower())] #lookup new location in list, return value at the point (should be same as new location)
 	else: 
 		print('Not a valid answer')
-		Ask_Location(Current_Location) #redo the function (mildly illegal code)
+		#Ask_Location(Current_Location) #redo the function (mildly illegal code)
+		return Current_Location
 
 def main(Current_Location: str) -> None: #had to pass var through
 	startup() #start screen
