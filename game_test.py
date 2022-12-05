@@ -1,46 +1,107 @@
-import os #best module, change my mind
+# shebang
+# -*- coding: UTF-8 -*-
 
-#________________________________________________________________________________________________________________________________
+# https://github.com/Cornelius-Figgle/TheLordJesusHimself--game-test/
 
-#setup globals
-Possible_Locations = ['woods', 'factory', 'heaven']
-Current_Location = Possible_Locations[Possible_Locations.index('woods')] #get location of value `'Woods'` in list
+'''
+game test
+'''
 
-#________________________________________________________________________________________________________________________________
+# note: view associated GitHub info as well
+__version__ = 'Pre-release'  
+__author__ = 'TheLordJesusHimself'
+__email__ = 'callumblumfield08@gmail.com'
+__maintainer__ = ['TheLordJesusHimself', 'Cornelius-Figgle']
+__copyright__ = 'Copyright (c) 2022 Max Harrison'
+__license__ = 'MIT'
+__status__ = 'Development'
+__credits__ = ['Callum Blumfield', 'Max Harrison']
 
-def startup() -> None: #Startup Screen
-	print('                                       _            _   \n                                      | |          | |  \n  __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ \n / _` |/ _` | \'_ ` _ \ / _ \ |______| | __/ _ \/ __| __|\n| (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ \n \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|\n  __/ |                                                 \n |___/                                                  \n')
-	#ascii art^^
-	Username = input('What shall we call you, explorer?\n >\t') #creates little arrow to indicate input
-	Username = capital_each(Username)
-	print (f'Welcome to my game, {Username}') #fstrings
 
-def capital_each(string: str) -> str: #makes each word lowercase and start with a capital letter
-	string = string.lower().split(' ') #make a list from each word
-	for word in string: #for each word
-		string[string.index(word)] = word.capitalize() #make it capital
-	string = ' '.join(string) #make back into str
-	return string #return str
+import sys
 
-def Ask_Location(Current_Location: str) -> str | None: #This asks for your location
-	Current_Location = capital_each(Current_Location) #print it nicely just for u
-	New_Location = input(f'\nYou are currently in the {Current_Location.strip()}! Where would you like to go?\n >\t') # `Current_Location.strip()` just removes trailing whitespace
 
-	if New_Location.lower() in Possible_Locations: #convert new loc to lowercase then see if it is a valid loc
-		return Possible_Locations[Possible_Locations.index(New_Location.lower())] #lookup new location in list, return value at the point (should be same as new location)
-	else: 
-		print('Not a valid answer')
-		return Current_Location
+possible_locations = ['woods', 'factory', 'heaven']
+current_location = possible_locations[possible_locations.index('woods')]
+# note: get location of value `Woods` in list
 
-def main(Current_Location: str) -> None: #had to pass var through
-	startup() #start screen
-	
-	try: #when not `Ctrl+C`
-		while True: #Loops
-			Current_Location = Ask_Location(Current_Location) #ask, passing params & returns
-			#smth happens in that place
-	except KeyboardInterrupt: pass #if you press `Ctrl+C` the game ends
+def startup() -> None:  # note: Startup Screen
+    '''
+    Prints title art and saves `username`
+    '''
+    
+    print('                                       _            _   \n                                      | |          | |  \n  __ _  __ _ _ __ ___   ___   ______  | |_ ___  ___| |_ \n / _` |/ _` | \'_ ` _ \ / _ \ |______| | __/ _ \/ __| __|\n| (_| | (_| | | | | | |  __/          | ||  __/\__ \ |_ \n \__, |\__,_|_| |_| |_|\___|           \__\___||___/\__|\n  __/ |                                                 \n |___/                                                  \n')
+    # note: ascii art^^
+    username = input('What shall we call you, explorer?\n >\t')
+    username = capital_each(username)
+    print(f'Welcome to my game, {username}')
 
-#________________________________________________________________________________________________________________________________
+def capital_each(string: str) -> str: 
+    '''
+    Makes each word in `string` lowercase and start with a capital, 
+    returns `string` with new formatting
 
-if __name__ == '__main__': main(Current_Location) #if run directly, do `main()`
+    - makes a list from each word
+    - for each word:
+        - makes it a capital
+    - makes it back into string
+    '''
+
+    string = string.lower().split(' ')
+    for word in string:
+        string[string.index(word)] = word.capitalize()
+    string = ' '.join(string)
+    return string
+
+def ask_location(current_location: str) -> str: 
+    '''
+    Asks for location and changes `current_location` if `new_location`
+    is valid. Returns the new location (sourced from 
+    `possible_locations`) if `new_location` is valid, else 
+    `current_location`
+
+    - print it nicely just for u
+    - `current_location.strip()` just removes trailing whitespace
+    - convert `new_location` to lowercase then see if it is a valid 
+    location
+    - lookup new location in list, return value at the point (should 
+    be same as new location)
+    '''
+
+    current_location = capital_each(current_location)
+    new_location = input('\nYou are currently in the' \
+    f'{current_location.strip()}! Where would you like to go?\n >\t')
+
+    if new_location.lower() in possible_locations:
+        return possible_locations[
+            possible_locations.index(
+                new_location.lower()
+            )
+        ] 
+    else: 
+        print('Not a valid answer')
+        return current_location
+
+
+def main(current_location: str) -> None:
+    '''
+    The main function that handles passing or args and return values.
+    Also handles the application loop and errors from functions - has
+    to be called with `current_location` to be able to pass it through
+    to `ask_location()`
+
+    In future will run the order of storyline etc
+    '''
+    
+    startup()
+    
+    try:  # note: when not `Ctrl+C`
+        while True: #Loops
+            current_location = ask_location(current_location) 
+            # note: ask, passing params & returns
+            # note: smth happens in that place
+    except KeyboardInterrupt: 
+        sys.exit(0)  # note: if you press `Ctrl+C` the game loop ends
+
+if __name__ == '__main__': 
+    main(current_location)   #note: if run directly, do `main()`
